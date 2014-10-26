@@ -16,14 +16,8 @@ But now QA is telling me I have some security vulnerabilities! They were able to
 
 What do I do to fix it???
 
-
-XSS:
-```
-http://localhost:3000/posts?utf8=%E2%9C%93&search=archive&status=foo=%22bar%22%3E%3Cscript%3Ealert%28%22p0wned!!!%22%29%3C/script%3E%3Cp%20data-foo
-```
-
-SQL Injection:
-
-```
-foo%'); INSERT INTO posts (id,title,body,created_at,updated_at) VALUES (99,'hacked','hacked alright','2013-07-18','2013-07-18'); SELECT "posts".* FROM "posts" WHERE (title like 'hacked%
-```
+Update
+--------
+Security holes have been fixed! Updating rails to the latest version really helped
+with the cross site scripting and fixes in the post model and search form did the trick for the
+SQL injection. Brakeman is reporting no errors and I have been unable to hack the site.
